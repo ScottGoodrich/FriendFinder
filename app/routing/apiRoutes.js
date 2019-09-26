@@ -1,4 +1,4 @@
-var friendsArray = require("../data/friends");
+var friendsArray = require("../data/friends.js");
 
 module.exports = function(app) {
     app.get("/api/friends", function(req, res) {
@@ -34,16 +34,12 @@ module.exports = function(app) {
         }
       }
 
+      friendsArray.push(userData);
+      
+      res.json(closestMatch);
     });
     
-    friendsArray.push(userData);
-    
-    res.json(closestMatch);
 
 
-    app.post("/api/clear", function(req, res) {
-      friendsArray.length = 0;  
-      res.json({ ok: true });
-    });
   };
   
